@@ -73,6 +73,7 @@
 \newcommand{\FIMzs}{\textbf{FIM-PP} (zero-shot)}
 \newcommand{\FIMft}{\textbf{FIM-PP} (fine-tuned)}
 \newcommand{\dataset}[1]{\textbf{#1}}
+\newcommand{\postersum}{\mathop{\raisebox{0.15ex}{\scalebox{4.0}[4.0]{$\displaystyle\sum$}}}\displaylimits}
 
 \newcommand{\subhead}[1]{\vspace{0.25em}{\color{FIMText}\bfseries #1}\par\vspace{0.2em}}
 \newcommand{\emline}[1]{{\color{FIMBlueDark}\bfseries #1}}
@@ -147,7 +148,7 @@
     \begin{block}{Motivation and Goals}
       \subhead{Marked temporal point processes}
       \noindent
-      \begin{minipage}[t]{0.58\linewidth}
+      \begin{minipage}[t]{0.50\linewidth}
       \vspace{0pt}%
         A marked temporal point process describes an event history
         $\mathcal{H}_t=\{(t_1,k_1),\dots,(t_n,k_n)\}$ through a conditional intensity
@@ -175,11 +176,11 @@
           \item Infer new dynamics directly from context.
           \item Keep access to an explicit intensity estimate.
         \end{itemize}}%
-      \end{minipage}\hspace{0.03\linewidth}%
-      \begin{minipage}[t]{0.34\linewidth}
-      \vspace{0pt}%
+      \end{minipage}\hspace{0.015\linewidth}%
+      \begin{minipage}[t]{0.47\linewidth}
+      \vspace*{-0.8cm}%
         \centering
-        \includegraphics[width=\linewidth,height=28cm,keepaspectratio]{pp_visualization.jpeg}%
+        \includegraphics[width=\linewidth,height=34cm,keepaspectratio]{pp_visualization.jpeg}%
       \end{minipage}
     \end{block}
 
@@ -192,7 +193,7 @@
       We sample processes from a broad prior over conditional intensities
       \[
       \lambda(t,k \mid \mathcal{H}_t)=
-      \max\!\left(0,\mu_k(t)+\sum_{(t',k')\in\mathcal{H}_t} z_{kk'}\,\gamma_{kk'}(t-t')\right),
+      \max\!\left(0,\mu_k(t)+\postersum_{(t',k')\in\mathcal{H}_t} z_{kk'}\,\gamma_{kk'}(t-t')\right),
       \]
       where $\mu_k(t)$ is chosen as either a \emline{constant}, a \emline{positive sinusoid}, or a \emline{Gamma-shaped initial-rate function}, and $\gamma_{kk'}(t)$ is chosen as either \emline{zero}, an \emline{exponential Hawkes kernel}, or a \emline{shifted Rayleigh kernel}. Interaction signs $z_{kk'} \in \{-1,0,1\}$ cover \emph{excitatory}, \emph{inhibitory}, and \emph{neutral} relations.
 
